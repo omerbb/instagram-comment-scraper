@@ -54,6 +54,6 @@ while pp<post_sayisi:
 
         except:
             pass
-print("finised"+str(pp))
+print("finised")
 
 
