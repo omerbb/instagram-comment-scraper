@@ -4,9 +4,9 @@ from selenium.webdriver.common.keys import Keys
 
 pp=0
 k=0
-"""https://www.instagram.com/acunilicali/?hl=tr"""
-hesap = str(input("Instagram hesabının linki\n-->"))
-post_sayisi =int(input("Kaç postun yorumu çıkarılsın\n-->"))
+
+hesap = str(input("Account link\n-->"))
+post_sayisi =int(input("How many ig post to scrape\n-->"))
 browser = webdriver.Firefox()
 browser.get(hesap)
 sleep(7)
@@ -39,6 +39,7 @@ while pp<post_sayisi:
         k = len(post) - s
     for x in range(k,len(post)):
         if pp ==post_sayisi:
+            browser.quit()
             break
         try:
             post[x].click()
