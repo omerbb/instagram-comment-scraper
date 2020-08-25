@@ -2,9 +2,11 @@ from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 
-
+pp=0
+k=0
 """https://www.instagram.com/acunilicali/?hl=tr"""
-hesap = str(input("instagram hesabının linki\n-->"))
+hesap = str(input("Instagram hesabının linki\n-->"))
+post_sayisi =int(input("Kaç postun yorumu çıkarılsın\n-->"))
 browser = webdriver.Firefox()
 browser.get(hesap)
 sleep(7)
@@ -27,17 +29,31 @@ except:
 
 post=browser.find_elements_by_xpath('//div[@class="v1Nh3 kIKUG  _bz0w"]')
 
+while pp<post_sayisi:
+    if pp>0:
+        s=len(post)
+        newposts = browser.find_elements_by_xpath('//div[@class="v1Nh3 kIKUG  _bz0w"]')
+        for x in newposts:
+            if x not in post:
+                post.append(x)
+        k = len(post) - s
+    for x in range(k,len(post)):
+        if pp ==post_sayisi:
+            break
+        try:
+            post[x].click()
+            sleep(7)
 
 
-for x in range(0,len(post)):
-    post[x].click()
-    sleep(5)
+            comment=browser.find_elements_by_class_name('C4VMK')
+            for a in range(0,len(comment)):
+                print(comment[a].text)
+            clo = browser.find_element_by_css_selector(".BI4qX > button:nth-child(1)")
+            clo.click()
+            pp+=1
 
-    comment=browser.find_elements_by_class_name('C4VMK')
-    for a in range(0,len(comment)):
-        print(comment[a].text)
-    clo = browser.find_element_by_css_selector(".BI4qX > button:nth-child(1)")
-    clo.click()
-print("finised")
+        except:
+            pass
+print("finised"+str(pp))
 
 
