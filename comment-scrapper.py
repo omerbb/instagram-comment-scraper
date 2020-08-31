@@ -4,7 +4,17 @@ from selenium.webdriver.common.keys import Keys
 
 pp=0
 k=0
+"""
+c# kullandığım zaman textboxa yazılan inputlar txt dosyasına kaydediliyo ve alttaki input kısmı şöyle gözüküyo:
 
+dosya = open(r"C:\Users\ÖMER\Desktop\InstagramCommentScrapper\logs\1.txt","r")
+logs = dosya.read().split()
+dosya.close()
+
+hesap = str(logs[0])
+post_sayisi =int(logs[1])
+
+"""
 hesap = str(input("Account link\n-->"))
 post_sayisi =int(input("How many ig post to scrape\n-->"))
 browser = webdriver.Firefox()
